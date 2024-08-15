@@ -1,0 +1,12 @@
+/* 畫面大小: 796 px, 476 px */
+body, #root {
+  width: 796px;
+  height: 476px;
+  margin: 0px;
+  border: 1px solid black;
+  position: relative;
+}
+
+p {
+  margin: 0px;
+}

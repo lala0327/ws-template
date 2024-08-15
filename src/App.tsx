@@ -1,11 +1,15 @@
-import './App.css'
+import { BrowserRouter } from 'react-router-dom'
+import AllRoutes from './routes'
 import WebsocketControl from './compoment/WebsocketControl'
 
 function App() {
 
   return (
     <>
-      <WebsocketControl/>
+      <BrowserRouter>
+        <WebsocketControl/>
+        <AllRoutes />
+      </BrowserRouter>
     </>
   )
 }

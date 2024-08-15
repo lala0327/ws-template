@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 function WebsocketControl() {
   // websocket 狀態
   const [isWsOpen, setIsWsOpen] = useState(false)
-  // 一開始須先具有ws參數，一開始context抓不到
   const ws = useRef<WebSocket|null>(null);
   // 防呆機制 - 防止 use effect 呼叫兩次
   const foolProofing = useRef<boolean>(true);
@@ -16,6 +15,7 @@ function WebsocketControl() {
     // 開啟 Websocket 連線
     ws.current = new WebSocket(port)
     console.log('連線中')
+
     // 監聽開啟
     ws.current.onopen = () => {
       console.log('己連縣')
@@ -45,9 +45,9 @@ function WebsocketControl() {
     };
     
     // 監聽錯誤
-    // ws.current.onerror = err => {
-    //   console.log('ws onerror:', err);
-    // };
+    ws.current.onerror = err => {
+      console.log('ws onerror:', err);
+    };
   },[])
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function WebsocketControl() {
   }, [isWsOpen, initWebsocket])
 
   return (
-    <>isWsOpen:{isWsOpen?'true':'false'}</>
+    <></>
   )
 }
 
